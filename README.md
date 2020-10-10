@@ -8,7 +8,7 @@ Clone this repository to use this application.
 
 ### Installing Dependencies
 ```bash
-git clone
+git clone https://github.com/ShantanuFadnis/cli-password-manager-utility.git
 
 cd cli-password-manager-utility
 
@@ -16,7 +16,7 @@ pip3 install -r requirements.txt
 ```
 
 ## Usage
-```bash
+```
 python3 app.py
 
 ls - List accounts from the database.
