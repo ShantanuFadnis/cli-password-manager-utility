@@ -148,17 +148,21 @@ try:
         for n, account in enumerate(accounts, start=1):
             print("%s. %-25s" % (n, account))
 
-    if action == "gen":
+    elif action == "gen":
         password = ArgumentWrapper.gen()
         print(password)
 
-    if action == "ret":
+    elif action == "ret":
         password = ArgumentWrapper.ret()
         print(password)
 
-    if action == "upd":
+    elif action == "upd":
         password = ArgumentWrapper.upd()
         print("Password successfully updated.")
         print(password)
+
+    else:
+        print(f"Invalid action: {action}")
+
 except PasswordManagerException as err:
     print(err)
