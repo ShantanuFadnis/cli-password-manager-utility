@@ -74,6 +74,7 @@ class PasswordManager:
     @classmethod
     def get_account(cls) -> str:
         accounts = list(PasswordManager.get_passwords().keys())
+        total = len(accounts)
         if len(accounts) == 0:
             raise PasswordManagerException("No accounts found in the database.")
         temp = dict()
@@ -81,7 +82,7 @@ class PasswordManager:
             print(f"{n}. {account}")
             temp[n] = account
         while True:
-            account_srno = input("Enter an account from the list above: ")
+            account_srno = input(f"Choose an option from the list above [1-{total}]: ")
             try:
                 account_srno = int(account_srno)
             except ValueError:
