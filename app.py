@@ -6,10 +6,10 @@ from uuid import uuid1
 
 def print_usage():
     print("%-20s %-40s" % ("Command", "Description"))
-    print("%-20s %-40s" % ("ls", "List accounts from the database"))
-    print("%-20s %-40s" % ("gen", "Generate a password for an account"))
-    print("%-20s %-40s" % ("ret", "Retrieve a password for an account"))
-    print("%-20s %-40s" % ("upd", "Regenerate a password for an existing account"))
+    print("%-20s %-40s" % ("list", "List accounts from the database"))
+    print("%-20s %-40s" % ("generate", "Generate a password for an account"))
+    print("%-20s %-40s" % ("retrieve", "Retrieve a password for an account"))
+    print("%-20s %-40s" % ("refresh", "Regenerate a password for an existing account"))
 
 
 class FileHandler:
@@ -132,6 +132,7 @@ class ArgumentWrapper:
         return PasswordManager.update_pw(account)
 
 
+# execution starts here
 try:
     arguments = sys.argv[1:]
     if len(arguments) == 0:
@@ -140,7 +141,7 @@ try:
 
     FileHandler.populate_store()
     action = arguments[0]
-    if action == "ls":
+    if action == "list":
         accounts = ArgumentWrapper.ls()
         if len(accounts) == 0:
             print("No accounts found in the database.")
@@ -149,15 +150,15 @@ try:
         for n, account in enumerate(accounts, start=1):
             print("%s. %-25s" % (n, account))
 
-    elif action == "gen":
+    elif action == "generate":
         password = ArgumentWrapper.gen()
         print(password)
 
-    elif action == "ret":
+    elif action == "retrieve":
         password = ArgumentWrapper.ret()
         print(password)
 
-    elif action == "upd":
+    elif action == "refresh":
         password = ArgumentWrapper.upd()
         print("Password successfully updated.")
         print(password)
